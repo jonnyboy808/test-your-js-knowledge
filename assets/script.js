@@ -1,6 +1,7 @@
 var timeDisplay = document.querySelector("#timeDisplay")
 var timer = document.querySelector("starter");
 
+// variables for timer
 var timeHolder = 0;
 var startingPoint = 60;
 var wrongPenalty = 5;
@@ -18,7 +19,28 @@ timer.addEventListener("click", function () {
             }
         }, 1000);
     }
-})
+});
+
+function render(questionOptions) {
+    card.innerHTML = "";
+    for (var i = 0; i < question.length; i++) {
+        var userQuestion = question[questionOptions].heading;
+        var userOptions = question[questionOptions].options;
+        card.textContent = userQuestion
+    }
+
+    userQuestion.forEach(function (line) {
+        var listOptions = document.createElement("li");
+        listOptions.textContent = line;
+        card.addEventListener("click", (compare));
+    })
+}
+
+var question =  {
+    Title: "Test",
+    Options: ["Test-1", "Test-2"],
+    Answer: "Test-2"
+    };
 
 
 var questionList = document.querySelector("#questions");
