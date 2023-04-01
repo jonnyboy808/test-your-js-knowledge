@@ -1,11 +1,15 @@
 var timeDisplay = document.querySelector("#timeDisplay")
 var timer = document.querySelector("starter");
 
+var listCreate = document.createElement("ul");
+
 // variables for timer
 var timeHolder = 0;
 var startingPoint = 60;
 var wrongPenalty = 5;
 
+var score = 0;
+var questionOptions = 0;
 
 // trigger for timer to appear and begin countdown
 timer.addEventListener("click", function () {
@@ -15,6 +19,7 @@ timer.addEventListener("click", function () {
             timeDisplay.textContent = "Remaining Time: " + startingPoint;
             if (startingPoint <= 0) {
                 clearInterval(timeHolder);
+                allDone();
                 timeDisplay.textContent = "Sorry but time is up";
             }
         }, 1000);
@@ -23,33 +28,28 @@ timer.addEventListener("click", function () {
 
 function render(questionOptions) {
     card.innerHTML = "";
+    listCreate.innerHTML = "";
     for (var i = 0; i < question.length; i++) {
         var userQuestion = question[questionOptions].heading;
         var userOptions = question[questionOptions].options;
         card.textContent = userQuestion
     }
 
-    userQuestion.forEach(function (line) {
+    userOptions.forEach(function (line) {
         var listOptions = document.createElement("li");
         listOptions.textContent = line;
-        card.addEventListener("click", (compare));
+        card.appendChild(listCreate);
+        listCreate.appendChild(listOptions);
+        listOptions.addEventListener("click", (compare));
     })
 }
 
+
+
+
+var card = document.querySelector("#card");
 var question =  {
     Title: "Test",
     Options: ["Test-1", "Test-2"],
     Answer: "Test-2"
     };
-
-
-var questionList = document.querySelector("#questions");
-
-function questions() {
-    questionList.innerHTML = "Test";
-
-    var li = document.createElement("li");
-    li.textContent = Test;
-
-    questionList.appendChild(li);
-}
