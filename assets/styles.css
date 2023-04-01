@@ -1,3 +1,14 @@
+* {
+    background-color: rgb(231, 226, 221);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 h1 {
     text-align: center;
+    background-color: rgb(31, 159, 168);
+    color: white;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding: 15px;
+    margin-top: 50px;
+    box-shadow: 3px 3px 5px gray;
 }
