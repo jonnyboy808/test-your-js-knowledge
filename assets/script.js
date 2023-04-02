@@ -29,8 +29,8 @@ function display(questionOptions) {
     card.innerHTML = "";
     createList.innerHTML = "";
     for (var i = 0; i < questionList.length; i++) {
-        var userQuestion = question[questionOptions].heading;
-        var userOptions = question[questionOptions].options;
+        var userQuestion = question[questionOptions].ask;
+        var userOptions = question[questionOptions].choices;
         card.textContent = userQuestion
     }
 
@@ -64,7 +64,7 @@ function compare(event) {
 questionOptions++;
 
 if (questionOptions >= questionList.length) {
-    complete();
+    end();
     addDiv.textContent = "Quiz has concluded" + " " + "You got " + score + "/" + questionList.length + "correct.";
 } else {
     display(questionOptions);
@@ -72,9 +72,35 @@ if (questionOptions >= questionList.length) {
 }
 
 
-var card = document.querySelector("#card");
-var question =  {
-    Title: "Test",
-    Options: ["Test-1", "Test-2"],
-    Answer: "Test-2"
-    };
+// function for when the quiz comes to an end and to display scores
+function end() {
+    card.innerHTML = "";
+    timeDisplay.innerHTML = "Finished!";
+// header for end of quiz
+    var addH2 = document.createElement("h2");
+    addH2.setAttribute("id", "addH2");
+    addH2.textContent = "The Quiz has came to an end"
+    card.appendChild(addH2);
+
+    var addP = document.createElement("p");
+    addP.setAttribute("id", "addP");
+    card.appendChild(addP);
+
+    if (startingPoint >=0) {
+        var timeRemaining = startingPoint;
+        var addP2 = document.createElement("p");
+        clearInterval(timeHolder);
+        addP.textContent = "Your final score is: " + timeRemaining;
+        card.appendChild(addP2);
+    }
+}
+
+
+
+
+var questionList = {
+    ask:"This is only a Test",
+    choices: ["taco", "meat", "pizza"],
+    answer: "pizza"
+
+}
