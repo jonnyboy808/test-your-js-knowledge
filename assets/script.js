@@ -1,11 +1,11 @@
 var timeDisplay = document.querySelector("#timeDisplay");
 var timer = document.querySelector("#starter");
-var card = document.querySelector ("card");
-var createList = document.createElement("ul");
+var card = document.querySelector ("#card");
+var listCreate = document.createElement("ul");
 
 // variables for timer
 var timeHolder = 0;
-var startingPoint = 2;
+var startingPoint = 60;
 var wrongPenalty = 5;
 var score = 0;
 var questionOptions = 0;
@@ -16,22 +16,24 @@ timer.addEventListener("click", function () {
         timeHolder = setInterval (function () {
             startingPoint--;
             timeDisplay.textContent = "Remaining Time: " + startingPoint;
+
             if (startingPoint <= 0) {
                 clearInterval(timeHolder);
                 end();
                 timeDisplay.textContent = "Sorry but time is up";
             }
         }, 1000);
-    } display(questionOptions)
+    } 
+    display(questionOptions);
 });
 
 function display(questionOptions) {
     card.innerHTML = "";
-    createList.innerHTML = "";
+    listCreate.innerHTML = "";
     for (var i = 0; i < questionList.length; i++) {
-        var userQuestion = question[questionOptions].ask;
-        var userOptions = question[questionOptions].choices;
-        card.textContent = userQuestion
+        var userQuestion = questionList[questionOptions].ask;
+        var userOptions = questionList[questionOptions].choices;
+        card.textContent = userQuestion;
     }
 
     userOptions.forEach(function (line) {
@@ -44,39 +46,9 @@ function display(questionOptions) {
 }
 
 
-
-
-function compare(event) {
-    var choices = event.target;
-    if (choices.matches("li")) {
-        var addDiv = document.createElement("div");
-        addDiv.setAttribute("id", "addDiv");
-
-        if (choices.textContent == questionList[questionOptions].answer) {
-            score++;
-            addDiv.textContent = "Correct! The answer was: " + questionList[questionOptions].answer;
-        } else {
-            startingPoint = startingPoint - wrongPenalty;
-            addDiv.textContent = "Sorry but the correct answer was: " + question[questionOptions].answer;
-    }
-}
-
-
-
-questionOptions++;
-
-if (questionOptions >= questionList.length) {
-    end();
-    addDiv.textContent = "Quiz has concluded" + " " + "You got " + score + "/" + questionList.length + "correct.";
-} else {
-    display(questionOptions);
-} card.appendChild(addDiv);
-}
-
-
 // function for when the quiz comes to an end and to display scores
 function end() {
-    card.innerHTML = "";
+    card.innerHTML = '';
     timeDisplay.innerHTML = "Finished!";
 // header for end of quiz
     var addH2 = document.createElement("h2");
@@ -85,6 +57,7 @@ function end() {
     card.appendChild(addH2);
 
     var addP = document.createElement("p");
+    addP.setAttribute("id", "addP");
     addP.setAttribute("id", "addP");
     card.appendChild(addP);
 
@@ -98,7 +71,7 @@ function end() {
 
     var textBox = document.createElement("label");
     textBox.setAttribute("id", "textBox");
-    textBox,textContent = "Type your initials: ";
+    textBox.textContent = "Type your initials: ";
     card.appendChild(textBox);
 
     var createInput = document.createElement("input");
@@ -135,13 +108,36 @@ function end() {
             localStorage.setItem("previousScores", newScore);
             window.location.replace("./")
         }
-    })
+    });
 
 
 
 } 
 
 
+function compare(event) {
+    var choices = event.target;
+    if (choices.matches("li")) {
+        var addDiv = document.createElement("div");
+        addDiv.setAttribute("id", "addDiv");
+        if (choices.textContent == questionList[questionOptions].answer) {
+            score++;
+            addDiv.textContent = "Correct! The answer was: " + questionList[questionOptions].answer;
+        } else {
+            startingPoint = startingPoint - wrongPenalty;
+            addDiv.textContent = "Sorry, The correct answer was: " + questionList[questionOptions].answers;
+        }
+    }
+
+    questionOptions++;
+    if (questionOptions >= questionList.length) {
+        end();
+        addDiv.textContent = "Total of " + score + " out of " + questionList.length + " correct.";
+    } else {
+        display(questionOptions);
+    }
+    card.appendChild(addDiv);
+}
 
 
 var questionList = {
@@ -149,4 +145,4 @@ var questionList = {
     choices: ["taco", "meat", "pizza"],
     answer: "pizza"
 
-}
+};
