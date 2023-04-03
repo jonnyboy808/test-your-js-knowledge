@@ -140,9 +140,30 @@ function compare(event) {
 }
 
 
-var questionList = {
-    ask:"This is only a Test",
-    choices: ["taco", "meat", "pizza"],
-    answer: "pizza"
-
-};
+var questionList = [
+    {
+    ask:"To check if two variables are equal in an if statment you wold use the ____ symble",
+    choices: ["=", "#", "==", "!"],
+    answer: "=="
+},
+{
+    ask: "The first index of an array is____.",
+    choices: ["1", "First", "0", "Auto"],
+    answer: "0"
+},
+{
+    ask:"What can we use to display text when an image doesn't load in the web browser",
+    choices: ["scr=", "text=", "discription=", "alt="],
+    answer: "alt="
+},
+{
+    ask:"What can be useful to use when trying to debug?",
+    choices: ["console log", "terminal", "gitHub", "google"],
+    answer: "console log"
+},
+{
+    ask:"Within our HTML file, how would we call for a js file to be linked",
+    choices: ["link rel='script.js'", "script src='script'.js", "href='script.js'", "All of the above" ],
+    answer: "script src='script'.js"
+},
+];
