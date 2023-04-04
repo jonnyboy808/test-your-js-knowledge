@@ -2,13 +2,13 @@ var topScore = document.querySelector("#topScore");
 var homepage = document.querySelector("#return");
 var clear = document.querySelector("#clear");
 
-
+// creates an event listener 
 clear.addEventListener("click", function() {
     localStorage.clear();
     location.reload();
 });
 
-// pulls from local storage to display content
+// pulls from local storage to display initials
 var previousScores = localStorage.getItem("previousScores");
 previousScores = JSON.parse(previousScores);
 

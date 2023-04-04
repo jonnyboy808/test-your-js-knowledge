@@ -1,5 +1,4 @@
 * {
-    
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 h1 {
@@ -60,4 +59,12 @@ li {
     color: white;
     padding: 20px;
     border-radius: 10px;
+}
+
+#createLabel {
+    margin-left: 100px;
+}
+
+#initials {
+    margin-left: 5px;
 }
