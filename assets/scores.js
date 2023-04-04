@@ -15,7 +15,7 @@ previousScores = JSON.parse(previousScores);
 if (previousScores !== null) {
     for (var i = 0; i < previousScores.length; i++) {
         var createList = document.createElement("li");
-        createList.textContent = previousScores[i].initials + " " + previousScores[i].score;
+        createList.textContent = previousScores[i].initials + " - " + previousScores[i].score;
         topScore.appendChild(createList);
     }
 }
