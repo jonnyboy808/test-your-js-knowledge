@@ -16,7 +16,7 @@ timer.addEventListener("click", function () {
         timeHolder = setInterval (function () {
             startingPoint--;
             timeDisplay.textContent = "Remaining Time: " + startingPoint;
-
+            // display if time runs out
             if (startingPoint <= 0) {
                 clearInterval(timeHolder);
                 end();
@@ -36,7 +36,6 @@ function display(questionOptions) {
         var userOptions = questionList[questionOptions].choices;
         card.textContent = userQuestion;
     }
-
     userOptions.forEach(function (line) {
         var listOptions = document.createElement("li");
         listOptions.textContent = line;
@@ -99,6 +98,7 @@ function end() {
             } else {
                 previousScores = JSON.parse(previousScores);
             }
+            // pushes up previous scores to display page
             previousScores.push(totalScore);
             var newScore = JSON.stringify(previousScores);
             localStorage.setItem("previousScores", newScore);
@@ -124,7 +124,7 @@ function compare(event) {
             addDiv.textContent = "Sorry, The correct answer was: " + questionList[questionOptions].answer;
         }
     }
-// allows the set of questions to continue after an answer has been selected
+    // allows the set of questions to continue after an answer has been selected
     questionOptions++;
     // if statement to show the full list and to take user to the last page
     if (questionOptions >= questionList.length) {
