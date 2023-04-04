@@ -1,22 +1,25 @@
-var score = document.querySelector("#topscores");
-var clear = document.querySelector("#clear");
+var topScore = document.querySelector("#topScore");
 var homepage = document.querySelector("#return");
+var clear = document.querySelector("#clear");
 
-clear.addEventListener("click", function(){
+
+clear.addEventListener("click", function() {
     localStorage.clear();
     location.reload();
 });
 
-var totalScores = localStorage.getItem("totalScores");
-totalScores = JSON.parse(totalScores);
+// pulls from local storage to display content
+var previousScores = localStorage.getItem("previousScores");
+previousScores = JSON.parse(previousScores);
 
-if (totalScores !== null) {
-    for (var i = 0; i < totalScores.length; i++) {
+if (previousScores !== null) {
+    for (var i = 0; i < previousScores.length; i++) {
         var createList = document.createElement("li");
-        createList.textContent =totalScores[i].initials + " " + totalScores[i].score;
-        topscores.appendChild(createList);
+        createList.textContent = previousScores[i].initials + " " + previousScores[i].score;
+        topScore.appendChild(createList);
     }
 }
-homepage.addEventListener("click", function(){
-    window.location.replace(" index.html");
+// adds listener to go back to the start page
+homepage.addEventListener("click", function() {
+    window.location.replace("./index.html");
 });

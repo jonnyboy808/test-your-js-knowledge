@@ -1,3 +1,33 @@
+
+var questionList = [
+    {
+    ask:"To check if two variables are equal in an if statment you wold use the ____ symble",
+    choices: ["=", "#", "==", "!"],
+    answer: "=="
+},
+{
+    ask: "The first index of an array is____.",
+    choices: ["1", "First", "0", "Auto"],
+    answer: "0"
+},
+{
+    ask:"What can we use to display text when an image doesn't load in the web browser",
+    choices: ["scr=", "text=", "discription=", "alt="],
+    answer: "alt="
+},
+{
+    ask:"What can be useful to use when trying to debug?",
+    choices: ["console log", "terminal", "gitHub", "google"],
+    answer: "console log"
+},
+{
+    ask:"Within our HTML file, how would we call for a js file to be linked",
+    choices: ["link rel='script.js'", "script src='script'.js", "href='script.js'", "All of the above" ],
+    answer: "script src='script'.js"
+},
+];
+
+
 var timeDisplay = document.querySelector("#timeDisplay");
 var timer = document.querySelector("#starter");
 var card = document.querySelector ("#card");
@@ -6,7 +36,7 @@ var listCreate = document.createElement("ul");
 // variables for timer
 var timeHolder = 0;
 var startingPoint = 60;
-var wrongPenalty = 5;
+var wrongPenalty = 10;
 var score = 0;
 var questionOptions = 0;
 
@@ -58,7 +88,6 @@ function end() {
 
     var addP = document.createElement("p");
     addP.setAttribute("id", "addP");
-    addP.setAttribute("id", "addP");
     card.appendChild(addP);
 
     if (startingPoint >=0) {
@@ -88,16 +117,11 @@ function end() {
 
     createSubmit.addEventListener("click", function () {
         var initials = createInput.value;
-
-        if (initials === null) {
-            console.log("No Value");
-        } else {
-            var totalScore = {
-                initials: initials,
-                score: timeRemaining
+        var totalScore = {
+            initials: initials,
+            score: timeRemaining
             }
-            console.log(totalScore);
-            var previousScores = localStorage.getItem("previousScore");
+            var previousScores = localStorage.getItem("previousScores");
             if (previousScores ===  null) {
                 previousScores = [];
             } else {
@@ -106,14 +130,9 @@ function end() {
             previousScores.push(totalScore);
             var newScore = JSON.stringify(previousScores);
             localStorage.setItem("previousScores", newScore);
-            window.location.replace("./")
-        }
-    });
-
-
-
-} 
-
+            window.location.replace("./scores.html");
+        });
+}
 
 function compare(event) {
     var choices = event.target;
@@ -139,31 +158,3 @@ function compare(event) {
     card.appendChild(addDiv);
 }
 
-
-var questionList = [
-    {
-    ask:"To check if two variables are equal in an if statment you wold use the ____ symble",
-    choices: ["=", "#", "==", "!"],
-    answer: "=="
-},
-{
-    ask: "The first index of an array is____.",
-    choices: ["1", "First", "0", "Auto"],
-    answer: "0"
-},
-{
-    ask:"What can we use to display text when an image doesn't load in the web browser",
-    choices: ["scr=", "text=", "discription=", "alt="],
-    answer: "alt="
-},
-{
-    ask:"What can be useful to use when trying to debug?",
-    choices: ["console log", "terminal", "gitHub", "google"],
-    answer: "console log"
-},
-{
-    ask:"Within our HTML file, how would we call for a js file to be linked",
-    choices: ["link rel='script.js'", "script src='script'.js", "href='script.js'", "All of the above" ],
-    answer: "script src='script'.js"
-},
-];
