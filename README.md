@@ -8,7 +8,7 @@ Ready to get to test your coding knowledge in a fun and interacting way? Give th
 
 ## Installation
 
-No type of installation needed for this application, simply visit the above link and follow the prompts to generate a new password.
+No type of installation needed for this application, simply visit the above link and follow the prompts to start testing your knowledge.
 
 ## Usage
 
